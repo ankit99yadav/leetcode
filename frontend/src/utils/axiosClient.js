@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Use environment variable if provided (set VITE_API_URL in frontend deployment or .env)
 // Fallback to local dev port 4000 (backend default) if not set.
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+const API_BASE = import.meta.env.VITE_API_URL || 'https://leetcode-3u3y.onrender.com';
 
 const axiosClient = axios.create({
     baseURL: API_BASE,
