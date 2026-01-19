@@ -37,6 +37,22 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser());
 
+// Health and root endpoints to avoid "Cannot GET /"
+app.get('/health', (req, res) => {
+    res.status(200).json({
+        status: 'ok',
+        uptime: process.uptime(),
+        timestamp: new Date().toISOString()
+    });
+});
+
+app.get('/', (req, res) => {
+    res.status(200).json({
+        message: 'Leetcode backend is running',
+        routes: ['/user', '/problem', '/submission', '/ai', '/video', '/health']
+    });
+});
+
 app.use('/user',authRouter);
 app.use('/problem',problemRouter);
 app.use('/submission',submitRouter);
